@@ -1,0 +1,16 @@
+name: 1vs1pvp
+main: fr.seijuro.PvP.Main
+version: 1.0
+author: Seijuro
+authors: [Seijuro, Gwenzy]
+commands:
+  setlobby:
+    description: Set the lobby.
+  setfirst:
+    description: Set the first point.
+  setsecond:
+    description: Set the second point.
+  setdeath:
+    description: Set the death point.
+  setarena:
+    description: Set the combat point.    
