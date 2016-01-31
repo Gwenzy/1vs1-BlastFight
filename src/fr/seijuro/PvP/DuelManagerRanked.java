@@ -30,8 +30,8 @@ public class DuelManagerRanked
   {
     DuelRanked duel = new DuelRanked(this.plugin, p1.getName(), p2.getName(), mode);
     
-    this.invites.removeAll(p1.getName());
-    this.invites.removeAll(p2.getName());
+    //this.invites.removeAll(p1.getName());
+    //this.invites.removeAll(p2.getName());
     
     p1.getInventory().clear();
     p2.getInventory().clear();
@@ -67,52 +67,10 @@ public class DuelManagerRanked
       p1.sendMessage(ChatColor.RED + "Vous ne pouvez pas vous inviter vous m�me!");
       return;
     }
-    boolean alreadyInvited = true;
-    
-    Iterator<Invite> it = this.invites.iterator();
-    while (it.hasNext())
-    {
-      Invite i = (Invite)it.next();
-      String inviter = i.getInviter();
-      String invited = i.getInvited();
-      if ((invited.equals(p1.getName())) && 
-        (inviter.equals(p2.getName())))
-      {
-        String s2 = (String)this.mode.get(p2.getName());
-        if (s2.equalsIgnoreCase(ChatColor.stripColor(p1.getItemInHand().getItemMeta().getDisplayName())))
-        {
-          acceptDuel(p1, s);
-          return;
-        }
-        alreadyInvited = false;
-      }
-      if ((inviter.equals(p1.getName())) && 
-        (invited.equals(p2.getName()))) {
-        alreadyInvited = false;
-      }
-    }
-    if (alreadyInvited)
-    {
-      this.invites.add(new Invite(p1.getName(), p2.getName()));
-      
-      p1.sendMessage(ChatColor.GOLD + ">>> Vous avez invit� " + ChatColor.AQUA + p2.getName() + ChatColor.GOLD + ", pour un training de " + ChatColor.AQUA  + s + ChatColor.GOLD + ".");
-      this.mode.put(p1.getName(), s);
-      p2.sendMessage(ChatColor.AQUA +  p1.getName() + ChatColor.GOLD +" vous � invit� pour un training de " + ChatColor.AQUA  + s + ChatColor.GOLD +  ", Cliquez droit sur lui avec la bonne �p�e pour accepter !");
-    }
+   
+   
   }
-  
-  public boolean acceptDuel(Player p1, String s)
-  {
-    if (this.invites.containsInvited(p1.getName()))
-    {
-      Player c = Bukkit.getPlayerExact(this.invites.getInviter(p1.getName()));
-      c.sendMessage(ChatColor.GOLD + p1.getName() + " � accept� votre invitation pour un training " + ChatColor.AQUA  + s + ChatColor.GOLD + "!");
-      createDuel(c, p1, s);
-      return true;
-    }
-    return false;
-  }
-  
+
   public void endDuel(Player p1)
   {
     Player p2 = this.duels.getOpponent(p1.getName());
@@ -153,29 +111,7 @@ public class DuelManagerRanked
     }
   }
   
-  public void leave(Player p1, boolean restore)
-  {
-    if (ovo.contains(p1.getName()))
-    {
-      ovo.remove(p1.getName());
-      if (this.duels.containsPlayer(p1.getName()))
-      {
-        endDuel(p1);
-        return;
-      }
-      this.invites.removeAll(p1.getName());
-      p1.sendMessage(ChatColor.RED + "Vous avez quitt� le 1vs1");
-    }
-    if (restore) {
-      for (Player p : Bukkit.getOnlinePlayers()) {
-        if (!p.getName().equals(p1.getName()))
-        {
-          p.showPlayer(p1);
-          p1.showPlayer(p);
-        }
-      }
-    }
-  }
+  
   
   public void enter(Player p1)
   {
@@ -236,8 +172,5 @@ public class DuelManagerRanked
     return ovo.contains(p1.getName());
   }
   
-  public Iterator<Invite> iterator()
-  {
-    return this.invites.iterator();
-  }
+ 
 }

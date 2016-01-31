@@ -37,16 +37,18 @@ public class Main
         Class.forName("org.sqlite.JDBC");
         con = DriverManager.getConnection("jdbc:sqlite:plugins/1vs1-Blastfight/data.db");
         state = con.createStatement();
-        state.executeUpdate("CREATE TABLE Ranked " +
-                   "(ID INT PRIMARY KEY     NOT NULL," +
-                   " UUID           TEXT    NOT NULL, " + 
-                   " AGE            INT     NOT NULL, " + 
-                   " ADDRESS        CHAR(50), " + 
-                   " SALARY         REAL)");
+        state.executeUpdate("CREATE TABLE IF NOT EXISTS Ranked " +
+                   "(id INTEGER PRIMARY KEY AUTOINCREMENT    NOT NULL," +
+                   " pseudo         VARCHAR(16)    NOT NULL, " + 
+                   " elo           INT NOT NULL, " + 
+                   " win           INT NOT NULL, " + 
+                   " lose         INT NOT NULL)");
+        
+        con.close();
         
     }
     //Test commentary
-    catch(Exception e){}
+    catch(Exception e){e.printStackTrace();}
     //SQLITE INIT END
     Bukkit.getServer().getScheduler().runTaskTimerAsynchronously(this, new Runnable(){
 
@@ -66,7 +68,7 @@ public class Main
 			//On check si un joueur dans la plage d'elo 75-125% existe | 
 			for(WaitingPlayer wp : waitingPlayers)
                         {
-                            if(wp.)
+                            //if(wp.)
                         }
 			
 			//Si oui, on lance des confirmations aux deux joueurs

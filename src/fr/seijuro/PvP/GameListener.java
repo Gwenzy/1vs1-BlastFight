@@ -65,19 +65,19 @@ public class GameListener
     
     soup = new ItemStack(Material.WOOD_SWORD);
     ItemMeta soupMeta = kitSelectorItem.getItemMeta();
-    soupMeta.setDisplayName("§6Soup PvP §b(Cliquez droit sur un joueur)");
+    soupMeta.setDisplayName("&6Soup PvP &b(Cliquez droit sur un joueur)");
     soup.setItemMeta(soupMeta);
     soup.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
     
     vanilla1 = new ItemStack(Material.IRON_SWORD);
     ItemMeta vanilla1Meta = kitSelectorItem.getItemMeta();
-    vanilla1Meta.setDisplayName("§6Vanilla PvP §b(Cliquez droit sur un joueur)");
+    vanilla1Meta.setDisplayName("&6Vanilla PvP &b(Cliquez droit sur un joueur)");
     vanilla1.setItemMeta(vanilla1Meta);
     vanilla1.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
     
     vanilla2 = new ItemStack(Material.DIAMOND_SWORD);
     ItemMeta vanilla2Meta = kitSelectorItem.getItemMeta();
-    vanilla2Meta.setDisplayName("§6Vanilla PvP Potion §b(Cliquez droit sur un joueur)");
+    vanilla2Meta.setDisplayName("&6Vanilla PvP Potion &b(Cliquez droit sur un joueur)");
     vanilla2.setItemMeta(vanilla2Meta);
     vanilla2.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
     /**
@@ -86,38 +86,38 @@ public class GameListener
      * */
     soup2 = new ItemStack(Material.TOPAZ_SWORD);
     ItemMeta soup2Meta = kitSelectorItem.getItemMeta();
-    soup2Meta.setDisplayName("§eTopaz Soup §7(Cliquez droit sur un joueur)");
+    soup2Meta.setDisplayName("&eTopaz Soup &7(Cliquez droit sur un joueur)");
     soup2.setItemMeta(soup2Meta);
     soup2.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
 
     vanilla3 = new ItemStack(Material.RUBY_SWORD);
     ItemMeta vanilla3Meta = kitSelectorItem.getItemMeta();
-    vanilla3Meta.setDisplayName("§eRuby Vanilla §7(Cliquez droit sur un joueur)");
+    vanilla3Meta.setDisplayName("&eRuby Vanilla &7(Cliquez droit sur un joueur)");
     vanilla3.setItemMeta(vanilla3Meta);
     vanilla3.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
     
     vanilla4 = new ItemStack(Material.EMERALD_SWORD);
     ItemMeta vanilla4Meta = kitSelectorItem.getItemMeta();
-    vanilla4Meta.setDisplayName("§eZircon Potion §7(Cliquez droit sur un joueur)");
+    vanilla4Meta.setDisplayName("&eZircon Potion &7(Cliquez droit sur un joueur)");
     vanilla4.setItemMeta(vanilla4Meta);
     vanilla4.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
     
     cheat = new ItemStack(Material.ZIRCON_SWORD);
     ItemMeta cheatMeta = kitSelectorItem.getItemMeta();
-    cheatMeta.setDisplayName("§ePVP CHEAT §c(Cliquez droit sur un joueur)");
+    cheatMeta.setDisplayName("&ePVP CHEAT &c(Cliquez droit sur un joueur)");
     cheat.setItemMeta(cheatMeta);
     cheat.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
     
     ranked = new ItemStack(Material.TOPAZ_KEY);
     ItemMeta rankedMeta = kitSelectorItem.getItemMeta();
-    rankedMeta.setDisplayName("§6Ranked vanilla §7(Bientôt)");
+    rankedMeta.setDisplayName("&6Ranked vanilla &7(Bient&t)");
     ranked.setItemMeta(rankedMeta);
     ranked.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
     
     
     rankedcheat = new ItemStack(Material.ZIRCON_KEY);
     ItemMeta rankedcheatMeta = kitSelectorItem.getItemMeta();
-    rankedcheatMeta.setDisplayName("§bRanked cheat §7(Bientôt)");
+    rankedcheatMeta.setDisplayName("&bRanked cheat &7(Bient&t)");
     rankedcheat.setItemMeta(rankedcheatMeta);
     rankedcheat.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
   }
@@ -147,14 +147,14 @@ public class GameListener
       p.getInventory().setItem(3, ranked);
       p.getInventory().setItem(5, rankedcheat);
       p.updateInventory();
-      p.sendMessage(ChatColor.YELLOW + ">>> " + ChatColor.GRAY + "Vous avez rejoins l'arène d'entrainement !");
-      p.sendMessage(ChatColor.YELLOW + ">>> " + ChatColor.GRAY + "Pour combatre contre quelqu'un cliquez droit avec la bonne épée sur quelqu'un !");
-      p.sendMessage(ChatColor.YELLOW + ">>> " + ChatColor.GRAY + "Pour que cette personne accepte le combat elle doit reproduire la même action sur vous avec la bonne épée !");
+      p.sendMessage(ChatColor.YELLOW + ">>> " + ChatColor.GRAY + "Vous avez rejoins l'ar&ne d'entrainement !");
+      p.sendMessage(ChatColor.YELLOW + ">>> " + ChatColor.GRAY + "Pour combatre contre quelqu'un cliquez droit avec la bonne &p&e sur quelqu'un !");
+      p.sendMessage(ChatColor.YELLOW + ">>> " + ChatColor.GRAY + "Pour que cette personne accepte le combat elle doit reproduire la m&me action sur vous avec la bonne &p&e !");
       p.sendMessage(ChatColor.YELLOW + ">>> " + ChatColor.GRAY + "Bon jeu sur le serveur training de BlastFight!");
       event.setCancelled(true);
       this.plugin.getDuelManager().enter(p);
       return;
-    }//Après on rajoute la gestion des ranked
+    }//Apr&s on rajoute la gestion des ranked
     else if (((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK)) && (p.getItemInHand().isSimilar(ranked)))
     {
     	//Clic avec l'item ranked
@@ -292,7 +292,7 @@ public class GameListener
         if (!this.plugin.getDuelManager().isInDuel(target)) {
           this.plugin.getDuelManager().inviteDuel(player, target, ChatColor.stripColor(player.getItemInHand().getItemMeta().getDisplayName()));
         } else {
-          player.sendMessage(ChatColor.RED + target.getName() + " est déjà en combat !");
+          player.sendMessage(ChatColor.RED + target.getName() + " est d&j& en combat !");
         }
       }
       else {
@@ -318,7 +318,7 @@ public class GameListener
     p.getInventory().setBoots(null);
     p.setGameMode(GameMode.SURVIVAL);
     p.sendMessage(ChatColor.GOLD + ">>> Bienvenue sur le serveur " + ChatColor.AQUA + "Training de BlastFight");
-    p.sendMessage(ChatColor.GOLD + ">>> Developpé en java par : " + ChatColor.AQUA + "Naruhiko315 , Seijuro , Mahdinchina & Gwenzy");
+    p.sendMessage(ChatColor.GOLD + ">>> Developp& en java par : " + ChatColor.AQUA + "Naruhiko315 , Seijuro , Mahdinchina & Gwenzy");
     p.sendMessage(ChatColor.GOLD + ">>> Pour rejoindre le jeu : " + ChatColor.YELLOW + "Cliquez droit !");
     p.setHealth(20.0D);
     p.setFoodLevel(20);
